@@ -28,8 +28,8 @@ jobs:
       
       - name: Build with dotnet
         run: dotnet build --configuration Release
-        working-directory: ${{env.ROOT_PATH}}
+        #working-directory: ${{env.ROOT_PATH}}
  
       - name: dotnet publish
         run: dotnet publish -c Release -o release
-        working-directory: ${{env.ROOT_PATH}}        
+        #working-directory: ${{env.ROOT_PATH}}        
