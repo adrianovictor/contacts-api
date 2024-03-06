@@ -1,5 +1,8 @@
 name: CI/CD Development
 
+env:
+  ROOT_PATH: './contacts-api'
+
 on:
   push:
     branches:
@@ -11,14 +14,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['8.0.x']
 
     steps:
-      - uses: actions/checkut@v3
+      - uses: actions/checkut@v4
+        # with:
+        #   repository: ${{github.repository}}
+        #   fetch-depth: 0
 
       - name: Setup .Net
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ matrix.dotnet-version }}
       
-      - name: Restore Dependecies
-        run: dotnet restore   
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+        working-directory: ${{env.ROOT_PATH}}
+
+      # - name: Restore Dependecies
+      #   run: dotnet restore   
