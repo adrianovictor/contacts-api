@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - homolog
+  pull_request:
+    branches:
+      - homolog
+
+jobs:
+  build:
+    
+    name: Building image
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Dockerfile
+        run: docker build . -t contacts.api:latest
