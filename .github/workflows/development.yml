@@ -10,17 +10,30 @@ on:
 
 jobs:
   build:
-    
-    name: Building image
+
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkut@v3
 
-      - name: Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      
+      - name: Restore Dependecies
+        run: dotnet restore          
 
-      - name: Build Dockerfile
-        run: docker build . -t contacts.api:latest
+    # name: Building image
+    # runs-on: ubuntu-latest
+    
+    # steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v2
+
+    #   - name: Buildx
+    #     id: buildx
+    #     uses: docker/setup-buildx-action@v1
+
+    #   - name: Build Dockerfile
+    #     run: docker build . -t contacts.api:latest
