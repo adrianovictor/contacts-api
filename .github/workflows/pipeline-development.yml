@@ -30,3 +30,6 @@ jobs:
         run: dotnet build --configuration Release
         working-directory: ${{env.ROOT_PATH}}
  
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.ROOT_PATH}}/contacts-api.csproj
+        working-directory: ${{env.ROOT_PATH}}        
