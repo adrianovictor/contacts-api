@@ -5,11 +5,17 @@ on:
     branches: [ master ]
 
 jobs:
-  build-and-deply:
+  build:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkut@v2
+      - uses: actions/checkut@v3
+
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
       # with:
       #   fetch-depth: 0
     
@@ -18,8 +24,8 @@ jobs:
       #   with:
       #     dotnet-version: 8.0.x
 
-      # name: Restore Dependecies
-      #   run: dotnet restore
+      - name: Restore Dependecies
+        run: dotnet restore
 
-      # name: Build
-      #   run: dotnet build -c Release --no-restore
+      - name: Build
+        run: dotnet build -c Release --no-restore
