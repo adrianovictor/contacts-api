@@ -10,16 +10,16 @@ jobs:
     
     steps:
       - uses: actions/checkut@v2
-      with:
-        fetch-depth: 0
+      # with:
+      #   fetch-depth: 0
     
-      - name: Setup .Net
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 8.0.x
+      # name: Setup .Net
+      #   uses: actions/setup-dotnet@v1
+      #   with:
+      #     dotnet-version: 8.0.x
 
-      - name: Restore Dependecies
-        run: dotnet restore
+      # name: Restore Dependecies
+      #   run: dotnet restore
 
-      - name: Build
-        run: dotnet build -c Release --no-restore
+      # name: Build
+      #   run: dotnet build -c Release --no-restore
