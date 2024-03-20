@@ -36,11 +36,11 @@ jobs:
       - name: Publish files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.DEVELOPMENT_ENVIRONMENT }}
+          server: ftp://maisingresso.com
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.USER_PASSWORD }}
           local-dir: ${{env.ROOT_PATH}}/bin/Release/net8.0/publish/
-          server-dir: ${{ secrets.SITE_PATH }}
+          server-dir: ./contato-api/
           protocol: ftp
           dangerous-clean-slate: true
           exclude: |
