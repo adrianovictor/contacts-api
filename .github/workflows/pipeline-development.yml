@@ -39,7 +39,7 @@ jobs:
           server: ${{ secrets.DEVELOPMENT_ENVIRONMENT }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.USER_PASSWORD }}
-          local-dir: ./contacts-api/contacts-api/contacts-api/bin/Release/net8.0/publish/
+          local-dir: ${{env.ROOT_PATH}}/bin/Release/net8.0/publish/
           server-dir: ${{ secrets.SITE_PATH }}
           protocol: ftp
           dangerous-clean-slate: true
