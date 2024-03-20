@@ -27,9 +27,23 @@ jobs:
           dotnet-version: ${{ matrix.dotnet-version }}
       
       - name: Build with dotnet
-        run: dotnet build --configuration Release
-        #working-directory: ${{env.ROOT_PATH}}
- 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o release
-        #working-directory: ${{env.ROOT_PATH}}        
+        run: dotnet publish --configuration Release --no-restore
+        working-directory: ${{env.ROOT_PATH}}
+
+      - name: Publish files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.DEVELOPMENT_ENVIRONMENT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.USER_PASSWORD }}
+          local-dir: ./bin/Release/net8.0/publish/
+          server-dir: ${{ secrets.SITE_PATH }}
+          protocol: ftp
+          dangerous-clean-slate: true
+          exclude: |
+            .cspell.json
+            package.json
+            package-lock.json
+      # - name: Restore Dependecies
+      #   run: dotnet restore   
+
