@@ -36,7 +36,7 @@ jobs:
       - name: Publish files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp://maisingresso.com
+          server: sftp://maisingresso.com
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.USER_PASSWORD }}
           local-dir: ${{env.ROOT_PATH}}/bin/Release/net8.0/publish/
