@@ -19,10 +19,7 @@ jobs:
         dotnet-version: ['8.0.x']
 
     steps:
-      - uses: actions/checkut@v4
-        # with:
-        #   repository: ${{github.repository}}
-        #   fetch-depth: 0
+      - uses: actions/checkout@v2
 
       - name: Setup .Net
         uses: actions/setup-dotnet@v3
@@ -49,3 +46,4 @@ jobs:
             package-lock.json
       # - name: Restore Dependecies
       #   run: dotnet restore   
+
