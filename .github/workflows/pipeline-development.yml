@@ -33,6 +33,13 @@ jobs:
         run: dotnet publish --configuration Release --no-restore
         working-directory: ${{env.ROOT_PATH}}
 
+      - name: App Settings Variable Substitution
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: '${{env.ROOT_PATH}}/bin/Release/net8.0/publish/appsettings.Development.json'
+        env:
+          ConnectionStrings.DefaultConnection: 'Server=localhost;database=teste;user=root;password=123'
+
       - name: Publish files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
