@@ -38,7 +38,7 @@ jobs:
         with:
           files: '${{env.ROOT_PATH}}/bin/Release/net8.0/publish/appsettings.Development.json'
         env:
-          ConnectionStrings.DefaultConnection: 'Server=localhost;database=teste;user=root;password=123'
+          ConnectionStrings.DefaultConnection: 'Server=localhost;database=teste;user=root;password=teste_de_senha'
 
       - name: Publish files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
